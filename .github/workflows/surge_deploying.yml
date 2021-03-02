@@ -1,0 +1,31 @@
+name: Project 1(deployment of website)
+
+on:
+  push:
+    branches: [ main ]
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Instal Node JS
+      uses: action/setup-node@v2-beta
+      with:
+        node-version: 12
+    - name: Install Surge
+      run: npm install -g surge
+    - name: Run Surge
+      run: surge./project1.surge.sh --token ${{secret.SURGE_TOKEN}}
+      
+      
+      
+    
+    
+    
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
