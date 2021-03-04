@@ -18,4 +18,4 @@ jobs:
     - name: Install Surge
       run: npm install -g surge
     - name: Run Surge
-      run: surge ./myproject1_2020.surge.sh --token ${{secrets.SURGE_TOKEN}}
+      run: surge ./ myproject1_2020.surge.sh --token ${{secrets.SURGE_TOKEN}}
